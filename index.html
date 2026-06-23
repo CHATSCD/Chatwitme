@@ -6,6 +6,7 @@
     <title>Shaun Dubuisson — Developer Portfolio</title>
     <meta name="description" content="Shaun Dubuisson builds bold, unfiltered digital products — from AI-powered chat tools to creative content platforms.">
     <link rel="stylesheet" href="./portfolio.css">
+    <script>document.documentElement.classList.add('js-enabled');</script>
 </head>
 <body>
     <header class="navbar">
@@ -24,14 +25,17 @@
 
     <main>
         <section class="hero" id="home">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-mesh"></div>
+            </div>
             <div class="hero-inner">
-                <p class="eyebrow">Developer &middot; Builder &middot; Creator</p>
-                <h1>I build software that doesn't ask permission.</h1>
-                <p class="hero-lead">
+                <p class="eyebrow reveal-on-load">Developer &middot; Builder &middot; Creator</p>
+                <h1 class="reveal-on-load">I build software that doesn't ask permission.</h1>
+                <p class="hero-lead reveal-on-load">
                     From AI-powered chat experiences to creative content tools, I design and ship
                     products that put imagination first — clean code, sharp design, zero compromise.
                 </p>
-                <div class="hero-actions">
+                <div class="hero-actions reveal-on-load">
                     <a href="#projects" class="btn btn-primary">Explore My Work</a>
                     <a href="#contact" class="btn btn-ghost">Let's Connect</a>
                 </div>
@@ -40,13 +44,13 @@
 
         <section class="section" id="about">
             <div class="section-inner">
-                <h2 class="section-title">About</h2>
-                <p class="about-text">
+                <h2 class="section-title reveal">About</h2>
+                <p class="about-text reveal">
                     I'm a developer who likes to build things that feel a little different —
                     useful, creative, and unapologetically bold. I care about clean execution
                     and shipping ideas that actually work, not just look good in a deck.
                 </p>
-                <ul class="tag-list">
+                <ul class="tag-list reveal">
                     <li>HTML5</li>
                     <li>CSS3</li>
                     <li>JavaScript</li>
@@ -59,11 +63,11 @@
 
         <section class="section section-alt" id="projects">
             <div class="section-inner">
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title reveal">Projects</h2>
 
-                <h3 class="project-category">Creative Tools</h3>
+                <h3 class="project-category reveal">Creative Tools</h3>
                 <div class="project-grid">
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <span class="project-badge">Featured Project</span>
                         <h3>Chat SCD</h3>
                         <p class="project-tagline">Unfiltered Creativity Platform</p>
@@ -87,7 +91,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Authora</h3>
                         <p class="project-tagline">Manuscript-to-EPUB, Done in Minutes</p>
                         <p class="project-desc">
@@ -107,14 +111,14 @@
                     </article>
                 </div>
 
-                <h3 class="project-category">Keith's Superstores Suite</h3>
-                <p class="project-category-desc">
+                <h3 class="project-category reveal">Keith's Superstores Suite</h3>
+                <p class="project-category-desc reveal">
                     A connected suite of internal tools built and deployed for Keith's
                     Superstores — a real, multi-location retail chain across Mississippi
                     and Alabama.
                 </p>
                 <div class="project-grid">
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <span class="project-badge">Flagship</span>
                         <h3>Keith's Superdeli</h3>
                         <p class="project-tagline">Deli Operations, Under Control</p>
@@ -134,7 +138,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <span class="project-badge">AI-Powered</span>
                         <h3>Deli Count</h3>
                         <p class="project-tagline">Count Inventory by Voice</p>
@@ -155,7 +159,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Keith's Label Ready</h3>
                         <p class="project-tagline">Print-Ready Deli Labels, Fast</p>
                         <p class="project-desc">
@@ -174,7 +178,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <span class="project-badge">Maps &amp; Routing</span>
                         <h3>Keith's F&amp;B Inspection</h3>
                         <p class="project-tagline">Inspections, Mapped and Optimized</p>
@@ -195,7 +199,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Keith's Retail Inspection</h3>
                         <p class="project-tagline">Store Walks, Digitized</p>
                         <p class="project-desc">
@@ -214,7 +218,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Shrink Shield</h3>
                         <p class="project-tagline">Know Where Your Inventory Goes</p>
                         <p class="project-desc">
@@ -233,7 +237,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Keith's Cig Inventory</h3>
                         <p class="project-tagline">Scan It, Count It, Done</p>
                         <p class="project-desc">
@@ -251,7 +255,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>Food Cost Calculator</h3>
                         <p class="project-tagline">Know Your Margins</p>
                         <p class="project-desc">
@@ -268,7 +272,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>ProveIt</h3>
                         <p class="project-tagline">Food Safety, Documented</p>
                         <p class="project-desc">
@@ -288,9 +292,9 @@
                     </article>
                 </div>
 
-                <h3 class="project-category">More Builds</h3>
+                <h3 class="project-category reveal">More Builds</h3>
                 <div class="project-grid">
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>illProvIt</h3>
                         <p class="project-tagline">Truth or Dare, With Real Stakes</p>
                         <p class="project-desc">
@@ -309,7 +313,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>BK Manager Prep</h3>
                         <p class="project-tagline">Built for One Friend's Big Interview</p>
                         <p class="project-desc">
@@ -327,7 +331,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card reveal">
                         <h3>The Cure</h3>
                         <p class="project-tagline">Never Miss a Dose</p>
                         <p class="project-desc">
@@ -350,8 +354,8 @@
 
         <section class="section contact-section" id="contact">
             <div class="section-inner">
-                <h2 class="section-title">Let's Build Something</h2>
-                <p class="contact-text">
+                <h2 class="section-title reveal">Let's Build Something</h2>
+                <p class="contact-text reveal">
                     Got an idea, a project, or just want to talk shop? I'm always up for the
                     next bold thing.
                 </p>
@@ -363,6 +367,8 @@
     <footer class="site-footer">
         <p>&copy; <span id="year"></span> Shaun Dubuisson. All rights reserved.</p>
     </footer>
+
+    <div class="cursor-glow" aria-hidden="true"></div>
 
     <script src="./portfolio.js"></script>
 </body>
