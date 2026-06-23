@@ -239,10 +239,27 @@ a {
 }
 
 /* Projects */
+.project-category {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 56px 0 8px;
+}
+
+.project-category:first-of-type {
+    margin-top: 0;
+}
+
+.project-category-desc {
+    color: var(--text-light);
+    margin: 0 0 24px;
+    max-width: 640px;
+}
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
+    margin-bottom: 16px;
 }
 
 .project-card {
@@ -306,18 +323,6 @@ a {
 
 .link-sm:hover {
     text-decoration: underline;
-}
-
-.project-card-placeholder {
-    border-style: dashed;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--text-light);
-}
-
-.project-card-placeholder h3 {
-    color: var(--text-light);
 }
 
 /* Contact */
