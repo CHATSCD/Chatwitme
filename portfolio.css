@@ -5,12 +5,13 @@
     --text-light: #6b7280;
     --text-on-dark: #e5e7eb;
     --accent: #6366f1;
-    --accent-light: #8b5cf6;
+    --accent-light: #a8d8f0;
+    --accent-pearl: #e8f4fb;
     --border: #e5e7eb;
     --radius: 12px;
     --max-width: 1080px;
     --accent-glow: rgba(99, 102, 241, 0.45);
-    --accent-glow-strong: rgba(139, 92, 246, 0.55);
+    --accent-glow-strong: rgba(168, 216, 240, 0.55);
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --dur-fast: 0.2s;
@@ -45,6 +46,11 @@
 
     .cursor-glow {
         display: none;
+    }
+
+    .ripple-layer,
+    .ripple-ring {
+        display: none !important;
     }
 }
 
@@ -194,7 +200,7 @@ a {
     height: 140%;
     background:
         radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.35), transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3), transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(168, 216, 240, 0.3), transparent 45%),
         radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.25), transparent 55%);
     animation: mesh-drift 20s var(--ease-out-expo) infinite alternate;
     will-change: transform;
@@ -232,7 +238,7 @@ a {
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 800;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #fff, var(--accent-light), #c7c9ff, #fff);
+    background: linear-gradient(90deg, #fff, var(--accent-light), var(--accent-pearl), #fff);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -298,6 +304,7 @@ a {
 
 /* Buttons */
 .btn {
+    position: relative;
     display: inline-block;
     padding: 13px 28px;
     border-radius: 999px;
@@ -314,7 +321,7 @@ a {
 
 .btn-primary {
     background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    color: white;
+    color: var(--bg);
     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
 }
 
@@ -467,7 +474,7 @@ html.js-enabled .reveal.is-visible {
 .project-badge {
     align-self: flex-start;
     background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    color: white;
+    color: var(--bg);
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -590,6 +597,67 @@ html.js-enabled .reveal.is-visible {
 
 .cursor-glow.is-active {
     opacity: 1;
+}
+
+/* Water-reflection ripple */
+.ripple-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ripple-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(168, 216, 240, 0.65);
+    box-shadow: 0 0 12px rgba(168, 216, 240, 0.35), inset 0 0 8px rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+    transform: scale(0.3);
+    opacity: 0.85;
+    animation: ripple-expand 0.65s var(--ease-out-expo) forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes ripple-expand {
+    0% {
+        transform: scale(0.3);
+        opacity: 0.85;
+    }
+    70% {
+        opacity: 0.35;
+    }
+    100% {
+        transform: scale(2.6);
+        opacity: 0;
+    }
+}
+
+.ripple-ring--contained {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    animation-name: ripple-expand-contained;
+}
+
+@keyframes ripple-expand-contained {
+    0% {
+        transform: scale(0.3);
+        opacity: 0.85;
+    }
+    70% {
+        opacity: 0.35;
+    }
+    100% {
+        transform: scale(5.5);
+        opacity: 0;
+    }
 }
 
 /* Mobile nav */

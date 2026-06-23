@@ -153,9 +153,76 @@ function initCursorGlow() {
     document.addEventListener('mouseleave', () => glow.classList.remove('is-active'));
 }
 
+function initRippleEffect() {
+    if (prefersReducedMotion) return;
+
+    const rippleLayer = document.querySelector('.ripple-layer');
+    if (!rippleLayer) return;
+
+    const SPAWN_INTERVAL_MS = 90;
+    const RIPPLE_LIFETIME_MS = 650;
+
+    function spawnRipple(x, y, container, variantClass) {
+        const ring = document.createElement('span');
+        ring.className = variantClass ? `ripple-ring ${variantClass}` : 'ripple-ring';
+        ring.style.left = `${x}px`;
+        ring.style.top = `${y}px`;
+        container.appendChild(ring);
+
+        const cleanup = () => ring.remove();
+        ring.addEventListener('animationend', cleanup, { once: true });
+        setTimeout(cleanup, RIPPLE_LIFETIME_MS + 100);
+    }
+
+    function makeThrottledSpawner() {
+        let lastSpawn = 0;
+        return (x, y, container, variantClass) => {
+            const now = performance.now();
+            if (now - lastSpawn < SPAWN_INTERVAL_MS) return;
+            lastSpawn = now;
+            spawnRipple(x, y, container, variantClass);
+        };
+    }
+
+    const isRippleTarget = (event) => event.target.closest('.project-card, .btn');
+
+    const trailSpawn = makeThrottledSpawner();
+    document.addEventListener('pointermove', (event) => {
+        if (isRippleTarget(event)) return;
+        if (event.pointerType === 'mouse' || event.pointerType === 'touch') {
+            trailSpawn(event.clientX, event.clientY, rippleLayer);
+        }
+    }, { passive: true });
+
+    document.addEventListener('pointerdown', (event) => {
+        if (isRippleTarget(event)) return;
+        spawnRipple(event.clientX, event.clientY, rippleLayer);
+    }, { passive: true });
+
+    const cardSpawn = makeThrottledSpawner();
+    document.querySelectorAll('.project-card').forEach((card) => {
+        const handlePointer = (event) => {
+            const rect = card.getBoundingClientRect();
+            cardSpawn(event.clientX - rect.left, event.clientY - rect.top, card, 'ripple-ring--contained');
+        };
+
+        card.addEventListener('pointerenter', handlePointer);
+        card.addEventListener('pointermove', rafThrottle(handlePointer));
+        card.addEventListener('pointerdown', handlePointer);
+    });
+
+    document.querySelectorAll('.btn').forEach((btn) => {
+        btn.addEventListener('pointerdown', (event) => {
+            const rect = btn.getBoundingClientRect();
+            spawnRipple(event.clientX - rect.left, event.clientY - rect.top, btn, 'ripple-ring--contained');
+        });
+    });
+}
+
 initRevealAnimations();
 initNavbarScrollState();
 initActiveLinkHighlight();
 initCardTilt();
 initMagneticButtons();
 initCursorGlow();
+initRippleEffect();
